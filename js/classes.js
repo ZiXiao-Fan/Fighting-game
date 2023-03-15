@@ -11,7 +11,7 @@ class Sprite {
       this.framesMax = framesMax
       this.framesCurrent = 0
       this.framesElapsed = 0
-      this.framesHold = 10
+      this.framesHold = 8
       this.offset = offset
     }
   
@@ -78,7 +78,7 @@ if(this.framesElapsed % this.framesHold === 0){
         this.health = 100;
         this.framesCurrent = 0;
       this.framesElapsed = 0;
-      this.framesHold = 10;
+      this.framesHold = 5;
       this.sprites = sprites
 
       for(const sprite in this.sprites){
@@ -104,6 +104,7 @@ if(this.framesElapsed % this.framesHold === 0){
       }
     
       attack() {
+        this.switchSprite('attack1')
         this.isAttacking = true;
         setTimeout(() => {
           this.isAttacking = false;
@@ -111,6 +112,9 @@ if(this.framesElapsed % this.framesHold === 0){
       }
 
       switchSprite(sprite){
+        if(this.image === this.sprites.attack1.image 
+          && this.framesCurrent<this.sprites.attack1.framesMax -1 ) return 
+          
           switch(sprite){
             case 'idle' :
               if(this.image !== this.sprites.idle.image){
@@ -137,6 +141,13 @@ if(this.framesElapsed % this.framesHold === 0){
               if(this.image !== this.sprites.fall.image){
               this.image = this.sprites.fall.image
     this.framesMax = this.sprites.fall.framesMax
+    this.framesCurrent = 0
+              }
+              break;
+              case 'attack1':
+              if(this.image !== this.sprites.attack1.image){
+              this.image = this.sprites.attack1.image
+    this.framesMax = this.sprites.attack1.framesMax
     this.framesCurrent = 0
               }
               break;
