@@ -24,7 +24,7 @@ function rectangularCollosion({ rectangle1, rectangle2 }) {
   }
   
   //Time accounting function
-  let timer = 10
+  let timer = 60
   let timerId 
   function decreaseTimer(){
       
